@@ -3,7 +3,7 @@ package Homework;
 меняя за один шаг одну букву, причем каждое новое слово должно быть в словаре (массиве слов).
 Например,даны слова "hit" и "cog" и словарь(массив слов) ["hot", "dot", "dog", "log", "lot"].
  Один из вариантов цепочки: "hit"->"hot"->"dot"->"dog"->"cog".*/
-public class string3 {
+public class string5 {
     public static void main(String[] args) {
 //      Я не уверен,что правильно все понял и сделал,но потратил я на это кучу времени:)
         String str = "hit";
