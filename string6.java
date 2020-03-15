@@ -1,7 +1,9 @@
 package Homework;
 
 import com.sun.xml.internal.fastinfoset.util.StringArray;
-
+/*Пользователь вводит названия городов через пробел.
+Вы их присваиваете переменной. Переставьте названия так,
+чтобы они были упорядочены по алфавиту.*/
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
