@@ -1,7 +1,22 @@
 package Homework.Farm;
+ public class Cow extends Pet implements GiveResources,CanFeed {
 
-public class Cow extends Pet {
-    public Cow(String name, int weight, int speed, int health, int resources) {
-        super(name, weight, speed, health, resources);
+     public Cow(String name, int weight, int speed, int health, int resources, boolean onFarm) {
+         super(name, weight, speed, health, resources, onFarm);
+     }
+
+     public void givRes (){
+        getResources();
+
+
     }
-}
+
+     @Override
+     public void feed() {
+         if (health<120){
+             health++;
+         }
+     }
+ }
+
+

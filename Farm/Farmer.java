@@ -1,6 +1,6 @@
 package Homework.Farm;
 
-public class Farmer {
+public class Farmer implements CollectRes {
     protected int resources = 5;
 
 
@@ -14,6 +14,8 @@ public class Farmer {
 
     public void collectRes(){
 
+
+
     }
     public void eatPet(){
 
@@ -22,11 +24,22 @@ public class Farmer {
 
     }
 
-    public void feed(){
+    public void feed(Pet[] pets){
+        for (int i = 0; i < pets.length ; i++) {
+            if (pets[i].onFarm){
+                pets[i].feed();
+            }
+        }
 
     }
 
     public void eat(){
         resources-=2;
+    }
+
+
+    @Override
+    public void collect(GiveResources pet) {
+        pet.givRes();
     }
 }
