@@ -15,10 +15,10 @@ public class Main {
         Pet pet10 = new Rabbit("Rabbit", 3, 10, 20, 0, true);
 
         Wild wild1 = new Wolf("Wolf", 100, 20, 25, true);
-        Wild wild2 = new Fox("Fox", 10, 18, 19, true);
+        Wild wild2 = new Fox("Fox", 10, 20, 19, true);
         Wild wild3 = new Bear("Bear", 200, 15, 100, true);
         Wild wild4 = new Bear("Bear", 200, 15, 130, true);
-        Wild wild5 = new Fox("Fox", 200, 18, 130, true);
+        Wild wild5 = new Fox("Fox", 200, 17, 19, true);
 
 
         Farm farm = new Farm(farmer);
