@@ -46,7 +46,7 @@ public class Farm {
     }
 
     public void passDay(){
-        int countPet,countDrAw0 = 0, countDrAw1 = 0, countDrAw2 = 0, driveAway,randomWild,randomPet,healthPet = 0,
+        int countDrAw0 = 0, countDrAw1 = 0, countDrAw2 = 0, driveAway,randomWild,randomPet,healthPet = 0,
         countDrAw3 = 0, countDrAw4 = 0;
         Random random = new Random();
 //        System.out.println(farmer.resources);
@@ -71,39 +71,20 @@ public class Farm {
                                     healthPet = pets[randomPet].getHealth() - wilds[randomWild].getForce();
 
                                     if (healthPet <= 0) {
-                                        pets[randomPet].setOnFarm(false);
-                                        System.out.println(wilds[randomWild].getName() + " Съел "+pets[randomPet].getName()  );
+                                        wilds[randomWild].seekAndDestroy(pets[randomPet]);
 
                                     }
                                     else {
                                         pets[randomPet].setHealth(healthPet);
                                         System.out.println( wilds[randomWild].getName()+ " Ранил " + pets[randomPet].getName());
                                     }
-                                    for (int i = 0; i < pets.length ; i++) {
-                                        if (pets[i].onFarm && pets[i] instanceof CanFeed){
-                                            System.out.println("Кормежка " + pets[i].getName() );
+
                                             farmer.feed(pets);
-                                        }
+                                            farmer.collectRes(pets);
+                                            farmer.eatPet(pets);
 
-                                    }
 
-                                countPet = 0;
-                                for (int i = 0; i < pets.length; i++) {
-                                    if (pets[i].onFarm) {
-                                        if (pets[i] instanceof GiveResources) {
-                                            System.out.println("Фермер собирает ресурсы c " + pets[i].getName());
-                                            farmer.resources += pets[i].getResources();
-                                            countPet++;
-                                        }
-                                    }
-                                }
-                                for (int i = 0; i < pets.length; i++) {
-                                    if (countPet == 0 && pets[i].onFarm && pets[i] instanceof CanEat) {
-                                        farmer.resources += pets[i].getHealth();
-                                        System.out.println("Фермер съел " + pets[i].getName());
-                                        pets[i].setOnFarm(false);
-                                    }
-                                }
+
                                 int countPet1 = 0;
                                 for (int i = 0; i < pets.length; i++) {
                                     if(!pets[i].onFarm ){
@@ -111,44 +92,16 @@ public class Farm {
                                     if (countPet1==10){
                                         System.out.println("Зверье закончилось,без кота и жизнь не та,фермер проиграл");
                                         return;
-                                    }}}
-
-
-
-
-                            }
+                                    }}} }
                                 else{
                                     System.out.println(pets[randomPet].getName() + " Убежал от "+ wilds[randomWild].getName() );
-                                    for (int i = 0; i <pets.length ; i++) {
-                                        if (pets[i].onFarm && pets[i] instanceof CanFeed){
-                                            System.out.println("Кормежка "+ pets[i].getName());
+
                                             farmer.feed(pets);
-                                        }
-
-                                    }
-
-
-
-                                    countPet = 0;
-                                    for (int i = 0; i < pets.length; i++) {
-                                        if (pets[i].onFarm) {
-                                            if (pets[i] instanceof GiveResources) {
-                                                System.out.println("Фермер собирает ресурсы с " + pets[i].getName());
-                                                farmer.resources += pets[i].getResources();
-                                                countPet++;
-                                            }
-                                        }
-                                    }
-                                    for (int i = 0; i < pets.length; i++) {
-                                        if (countPet == 0 && pets[i].onFarm && pets[i] instanceof CanEat) {
-                                            farmer.resources += pets[i].getHealth();
-                                            System.out.println("Фермер съел" + pets[i].getName());
-                                            pets[i].setOnFarm(false);
+                                            farmer.collectRes(pets);
+                                            farmer.eatPet(pets);
 
 
 
-                                        }
-                                    }
                                     int countPet1 = 0;
                                     for (int i = 0; i < pets.length; i++) {
                                         if(!pets[i].onFarm ){
@@ -204,38 +157,11 @@ public class Farm {
                                     System.out.println("Фермер молодец");
                                     return;
                                 }
+                                        farmer.feed(pets);
+                                        farmer.collectRes(pets);
+                                        farmer.eatPet(pets);
 
-                                    for (int i = 0; i <pets.length ; i++) {
-                                        if (pets[i].onFarm && pets[i] instanceof CanFeed){
-                                            System.out.println("Кормежка "+ pets[i].getName());
-                                            farmer.feed(pets);
-                                        }
-
-                                    }
-
-
-
-                                    countPet = 0;
-                                    for (int i = 0; i < pets.length; i++) {
-                                        if (pets[i].onFarm) {
-                                            if (pets[i] instanceof GiveResources) {
-                                                System.out.println("Фермер собирает ресурсы с " + pets[i].getName());
-                                                farmer.resources += pets[i].getResources();
-                                                countPet++;
-                                            }
-                                        }
-                                    }
-                                    for (int i = 0; i < pets.length; i++) {
-                                        if (countPet == 0 && pets[i].onFarm && pets[i] instanceof CanEat) {
-                                            farmer.resources += pets[i].getHealth();
-                                            System.out.println("Фермер съел" + pets[i].getName());
-                                            pets[i].setOnFarm(false);
-
-
-
-                                        }
-                                    }
-                                    int countPet1 = 0;
+                                        int countPet1 = 0;
                                     for (int i = 0; i < pets.length; i++) {
                                         if(!pets[i].onFarm ){
                                             countPet1++;
@@ -244,21 +170,12 @@ public class Farm {
                                                 return;
                                             }}}
 
-                            }
-
-
-
-
-
-                        }
+                            } }
 
                         else {
                             System.out.println("The Farmer DIED");
                             return;}
                     }
                 }
-       }
-
-        }
-    }
+       } }}
 

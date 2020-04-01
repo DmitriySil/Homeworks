@@ -25,4 +25,9 @@ public class Wild extends Enimals {
     public void setOnFarm(boolean onFarm) {
         this.onFarm = onFarm;
     }
+
+    public void seekAndDestroy(Pet pets){
+        System.out.println(getName() + " Съел "+pets.getName());
+        pets.setOnFarm(false);
+    }
 }
