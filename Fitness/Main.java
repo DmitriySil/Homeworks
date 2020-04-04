@@ -1,5 +1,6 @@
 package Homework.Fitness;
 
+import javax.jws.soap.SOAPBinding;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -45,7 +46,8 @@ public class Main {
         FitnessClub fitnessClub = new FitnessClub();
         fitnessClub.addPeople(memberships);
 
-       fitnessClub.fitnessDay();
+        fitnessClub.fitnessDay();
+        System.out.println("Что требуется в задаче не особо понял,сделал,как сделал ¯\\_(ツ)_/¯");
 
 
 
