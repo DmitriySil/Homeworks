@@ -1,18 +1,20 @@
 package Homework.TemperatureConverter;
 
 public class Kelvin extends Temperature implements Converter {
-
+    protected final double coef = 5;
+    protected final double coef1 = 273.15;
+    protected final double coef2 = 32;
+    protected final double coef4 = 9;
 
     @Override
-    public void convert(String t, double val, String t1) {
-        double K;
+    public void convert(String t,double value) {
         if (t.equals("CE")){
-            K = val + 273.15;
-            System.out.println(K + " Ce");
+            value2 = value + coef1;
+            System.out.println(value+"CE"+" = "+value2 + "KL");}
             if (t.equals("FR")){
-                K = 5*(val - 32)/9+273.15;
-                System.out.println(K+"fr");
+                value2 = coef*(value - coef2)/coef4+coef1;
+                System.out.println(value+"FR"+" = "+value2+"KL");
             }
-        }
+
     }
 }

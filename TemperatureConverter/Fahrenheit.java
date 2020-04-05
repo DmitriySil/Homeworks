@@ -1,17 +1,21 @@
 package Homework.TemperatureConverter;
 
 public class Fahrenheit extends Temperature implements Converter {
+protected double value;
+protected double conValue;
+protected final double coef = 1.8;
+protected final double coef2 = 32;
+protected final double coef3 = 273;
 
 
     @Override
-    public final void convert(String t, double val, String t1) {
-        double F;
+    public final void convert(String t,double value) {
         if (t.equals("CE")){
-        F = (val * 1.8)+32;
-        System.out.println(F);}
+        value2 = (value * coef)+coef2;
+        System.out.println(value+"CE"+" = "+value2+"FR");}
         if (t.equals("KL")){
-            F = 1.8*(val-273)+32;
-            System.out.println(F);
+            value2 = coef*(value-coef3)+coef2;
+            System.out.println(value+"KL"+" = "+value2+"FR");
         }
 
     }
