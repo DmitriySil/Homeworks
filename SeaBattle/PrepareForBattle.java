@@ -5,6 +5,15 @@ import java.util.Random;
 public class PrepareForBattle {
 
         public Battleship battleship;
+        public int[][] battlefield = new int[10][10];
+
+    public int[][] getBattlefield() {
+        return battlefield;
+    }
+
+    public void setBattlefield(int[][] battlefield) {
+        this.battlefield = battlefield;
+    }
 
     public Battleship getBattleship() {
         return battleship;
@@ -25,7 +34,7 @@ public class PrepareForBattle {
             HeavyCruiser heavyCruiser2 = new HeavyCruiser();
 
 
-            int[][] battlefield = new int[10][10];
+
             for (int i = 0; i < battlefield.length; ++i) {
                 for (int j = 0; j < battlefield.length; ++j) {
                     battlefield[i][j] = (i * 10) + j + 1;
@@ -87,7 +96,7 @@ public class PrepareForBattle {
                 else
                     if (a > 6 && b < 3) {
                         for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
-                            battlefield[a][b] = battlefield[a - s][b];
+                            battlefield[a][b] = battlefield[a][b+s];
                             battleship.decks[j] = battlefield[a][b];
                         }
                         if (a == 9 && b != 0) {
