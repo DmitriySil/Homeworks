@@ -3,7 +3,7 @@ package Homework.SeaBattle;
 import java.util.Scanner;
 
 public class Battle {
-    public static void main(String[] args) {
+    public void start() {
         int[][] battlefield = new int[10][10];
         int count = 0;
 
@@ -15,49 +15,33 @@ public class Battle {
             System.out.println();
         }
         Battleship battleship = new Battleship();
-        PrepareForBattle prepareForBattle = new PrepareForBattle(battleship);
+        HeavyCruiser heavyCruiser1 = new HeavyCruiser();
+        HeavyCruiser heavyCruiser2 = new HeavyCruiser();
+        PrepareForBattle prepareForBattle = new PrepareForBattle(battleship,heavyCruiser1,heavyCruiser2);
         prepareForBattle.prepare();
+        System.out.println("Бой начался");
         while (true) {
-            System.out.println("Shoot");
+            System.out.println("Введите координаты стрельбы 'a,b,c,d,e,f,g,h,i,j'");
             Scanner scanner1 = new Scanner(System.in);
             Scanner scanner2 = new Scanner(System.in);
             char coordinates = scanner1.next().charAt(0);
+            System.out.println("Введите коректировку '1,2,3,4,5,6,7,8,9,10'1");
             int coordinates2 = scanner2.nextInt();
 
             System.out.println(coordinates);
             int a = 0, b = 0;
 //        сравнение введенныхкоординат с цифрами
             switch (coordinates) {
-                case 'a':
-                    b = 0;
-                    break;
-                case 'b':
-                    b = 1;
-                    break;
-                case 'c':
-                    b = 2;
-                    break;
-                case 'd':
-                    b = 3;
-                    break;
-                case 'e':
-                    b = 4;
-                    break;
-                case 'f':
-                    b = 5;
-                    break;
-                case 'g':
-                    b = 6;
-                    break;
-                case 'h':
-                    b = 7;
-                    break;
-                case 'i':
-                    b = 8;
-                    break;
-                case 'j':
-                    b = 9;
-                    break;
+                case 'a': b = 0;break;
+                case 'b': b = 1;break;
+                case 'c': b = 2;break;
+                case 'd': b = 3;break;
+                case 'e': b = 4;break;
+                case 'f': b = 5;break;
+                case 'g': b = 6;break;
+                case 'h': b = 7;break;
+                case 'i': b = 8;break;
+                case 'j': b = 9;break;
             }
             switch (coordinates2) {
                 case 1:

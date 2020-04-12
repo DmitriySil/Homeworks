@@ -33,6 +33,7 @@ public class Main {
 
             }}
         }
-        System.out.println(strings[9][1]);
+       Battle battle = new Battle();
+        battle.start();
     }
 }
