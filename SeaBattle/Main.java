@@ -7,6 +7,7 @@ public class Main {
         char[][] strings = new char[10][10];
         char a = 'A';
         char b = '1';
+        System.out.println("этопросто так здесь");
         for (int i = 0; i < strings.length; i++) {
             if (i < 1) {
                 System.out.println();

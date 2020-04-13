@@ -58,24 +58,24 @@ public class PrepareForBattle {
                     System.out.print("  " + battlefield[i][j]);
                 }
                 System.out.println();
-            }
+            }//fixme очень много условий для расстановки,даже одного корабля получается
 //расстановка кораблей начиная с большего
 //        battleship
-            int a = random.nextInt(10);
+            int a = random.nextInt(10);//рандомятся координаты
             int b = random.nextInt(10);
             System.out.println(battlefield[a][b]);
             for (int i = 0; i < battleship.decks.length; i++) {
                 if (battlefield[a][b] != 0 && i < 1) {
-                    battleship.decks[i] = battlefield[a][b];
+                    battleship.decks[i] = battlefield[a][b];//обозначается начало коробля
 
                 }
-                if (a > 6 && b > 6) {
+                if (a > 6 && b > 6) {           //расстановка с условиями чтоб не выйти за рамки
                     for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
                         battlefield[a][b] = battlefield[a - s][b];
                         battleship.decks[j] = battlefield[a][b];
                     }
-                    if (a == 9 && b != 9) {    //ограждение вокругкорабля,куданельзя ставить др
-                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                    if (a == 9 && b != 9) {    //ограждение вокруг корабля,куданельзя ставить др(111 - клетки вокруг)
+                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;// 0 - корабль на поле
                         battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
                         battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;battlefield[a - 2][b + 1] = 111;
                         battlefield[a - 3][b] = 0;battlefield[a - 3][b - 1] = 111;battlefield[a - 3][b + 1] = 111;
@@ -246,11 +246,36 @@ public class PrepareForBattle {
                                 System.out.println("4 право верх 4");
                                 break;
                             }// todo  добавить ,что в остальных случаях
+               } else {if (a==0){
+                        for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
+                            battlefield[a][b] = battlefield[a + s][b];
+                            battleship.decks[j] = battlefield[a][b];}
+                        battlefield[a][b] = 0;battlefield[a][b-1] = 111;battlefield[a][b+1] = 111;
+                        battlefield[a+1][b] = 0;battlefield[a +1][b -1] = 111;battlefield[a + 1][b + 1] = 111;
+                        battlefield[a+2][b] = 0;battlefield[a +2][b -1] = 111;battlefield[a + 2][b + 1] = 111;
+                        battlefield[a+3][b] = 0;battlefield[a + 3][b -1] = 111;battlefield[a + 3][b + 1] = 111;
+                        battlefield[a+4][b] = 111;battlefield[a + 4][b-1] = 111;battlefield[a + 4][b + 1] = 111;
+                        System.out.println("4 верх 1");
+                        break;
+                    }if (a<5){for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
+                        battlefield[a][b] = battlefield[a + s][b];
+                        battleship.decks[j] = battlefield[a][b];}
+                        battlefield[a][b] = 0;battlefield[a][b-1] = 111;battlefield[a][b+1] = 111;
+                        battlefield[a+1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                        battlefield[a+2][b] = 0;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                        battlefield[a+3][b] = 0;battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
+                        battlefield[a+4][b] = 111;battlefield[a + 4][b - 1] = 111;battlefield[a + 4][b + 1] = 111;
+                        battlefield[a-1][b] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                        System.out.println("4 верх 2");
+                        break;
                }
+
+                    }
             }
-//            heavyCruiser todo
+//            heavyCruiser fixme сделать условия не наложения корабля на корабль(while работает не совсем корректно)
+//                          и пока не повторяет цикл,если рандом непопадает в условия
 while ((battlefield[a][b] == 0 || battlefield[a][b] == 111 || battlefield[a - 1][b] == 0 || battlefield[a - 1][b] == 111
-        || battlefield[a - 2][b] == 0 || battlefield[a - 2][b] == 111)){
+        || battlefield[a - 2][b] == 0 || battlefield[a - 2][b] == 111)){  // при такой проверке иногда выходит за границы поля
          a = random.nextInt(10);
          b = random.nextInt(10);
         System.out.println(battlefield[a][b]);
