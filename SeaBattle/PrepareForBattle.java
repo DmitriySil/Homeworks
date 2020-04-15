@@ -7,7 +7,70 @@ public class PrepareForBattle {
         public Battleship battleship;
         public HeavyCruiser heavyCruiser1;
         public HeavyCruiser heavyCruiser2;
+        public LightCruiser lightCruiser1;
+        public LightCruiser lightCruiser2;
+        public LightCruiser lightCruiser3;
+        public Destroyer destroyer1;
+        public Destroyer destroyer2;
+        public Destroyer destroyer3;
+        public Destroyer destroyer4;
         public int[][] battlefield = new int[10][10];
+
+    public LightCruiser getLightCruiser1() {
+        return lightCruiser1;
+    }
+
+    public void setLightCruiser1(LightCruiser lightCruiser1) {
+        this.lightCruiser1 = lightCruiser1;
+    }
+
+    public LightCruiser getLightCruiser2() {
+        return lightCruiser2;
+    }
+
+    public void setLightCruiser2(LightCruiser lightCruiser2) {
+        this.lightCruiser2 = lightCruiser2;
+    }
+
+    public LightCruiser getLightCruiser3() {
+        return lightCruiser3;
+    }
+
+    public void setLightCruiser3(LightCruiser lightCruiser3) {
+        this.lightCruiser3 = lightCruiser3;
+    }
+
+    public Destroyer getDestroyer1() {
+        return destroyer1;
+    }
+
+    public void setDestroyer1(Destroyer destroyer1) {
+        this.destroyer1 = destroyer1;
+    }
+
+    public Destroyer getDestroyer2() {
+        return destroyer2;
+    }
+
+    public void setDestroyer2(Destroyer destroyer2) {
+        this.destroyer2 = destroyer2;
+    }
+
+    public Destroyer getDestroyer3() {
+        return destroyer3;
+    }
+
+    public void setDestroyer3(Destroyer destroyer3) {
+        this.destroyer3 = destroyer3;
+    }
+
+    public Destroyer getDestroyer4() {
+        return destroyer4;
+    }
+
+    public void setDestroyer4(Destroyer destroyer4) {
+        this.destroyer4 = destroyer4;
+    }
 
     public HeavyCruiser getHeavyCruiser1() {
         return heavyCruiser1;
@@ -42,11 +105,19 @@ public class PrepareForBattle {
     }
 
 
-
-    public PrepareForBattle(Battleship battleship, HeavyCruiser heavyCruiser1, HeavyCruiser heavyCruiser2) {
+    public PrepareForBattle(Battleship battleship, HeavyCruiser heavyCruiser1, HeavyCruiser heavyCruiser2,
+                            LightCruiser lightCruiser1, LightCruiser lightCruiser2, LightCruiser lightCruiser3,
+                            Destroyer destroyer1, Destroyer destroyer2, Destroyer destroyer3, Destroyer destroyer4) {
         this.battleship = battleship;
         this.heavyCruiser1 = heavyCruiser1;
         this.heavyCruiser2 = heavyCruiser2;
+        this.lightCruiser1 = lightCruiser1;
+        this.lightCruiser2 = lightCruiser2;
+        this.lightCruiser3 = lightCruiser3;
+        this.destroyer1 = destroyer1;
+        this.destroyer2 = destroyer2;
+        this.destroyer3 = destroyer3;
+        this.destroyer4 = destroyer4;
     }
 
     public void prepare() {
@@ -69,7 +140,7 @@ public class PrepareForBattle {
                     battleship.decks[i] = battlefield[a][b];//обозначается начало коробля
 
                 }
-                if (a > 6 && b > 6) {           //расстановка с условиями чтоб не выйти за рамки
+                if (a > 5 && b > 5) {           //расстановка с условиями чтоб не выйти за рамки
                     for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
                         battlefield[a][b] = battlefield[a - s][b];
                         battleship.decks[j] = battlefield[a][b];
@@ -113,7 +184,7 @@ public class PrepareForBattle {
                                 break;
                             }
                 }
-                else if (a > 6 && b < 3) {
+                else if (a > 5 && b < 6) {
                         for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
                             battlefield[a][b] = battlefield[a][b+s];
                             battleship.decks[j] = battlefield[a][b];
@@ -158,7 +229,7 @@ public class PrepareForBattle {
                                     System.out.println("4 лево низ 4");
                                     break;
                                 }
-                    }else if (a<4 && b<4){
+                    }else if (a<6 && b<6){
                     for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
                         battlefield[a][b] = battlefield[a + s][b];
                         battleship.decks[j] = battlefield[a][b];}
@@ -203,7 +274,7 @@ public class PrepareForBattle {
                                 }
 
                 }
-               else if (a<4 && b>6){
+               else if (a<6 && b>5){
                     for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
                         battlefield[a][b] = battlefield[a + s][b];
                         battleship.decks[j] = battlefield[a][b];}
@@ -246,31 +317,7 @@ public class PrepareForBattle {
                                 System.out.println("4 право верх 4");
                                 break;
                             }// todo  добавить ,что в остальных случаях
-               } else {if (a==0){
-                        for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
-                            battlefield[a][b] = battlefield[a + s][b];
-                            battleship.decks[j] = battlefield[a][b];}
-                        battlefield[a][b] = 0;battlefield[a][b-1] = 111;battlefield[a][b+1] = 111;
-                        battlefield[a+1][b] = 0;battlefield[a +1][b -1] = 111;battlefield[a + 1][b + 1] = 111;
-                        battlefield[a+2][b] = 0;battlefield[a +2][b -1] = 111;battlefield[a + 2][b + 1] = 111;
-                        battlefield[a+3][b] = 0;battlefield[a + 3][b -1] = 111;battlefield[a + 3][b + 1] = 111;
-                        battlefield[a+4][b] = 111;battlefield[a + 4][b-1] = 111;battlefield[a + 4][b + 1] = 111;
-                        System.out.println("4 верх 1");
-                        break;
-                    }if (a<5){for (int j = 1, s = 1; j < battleship.decks.length; s++, j++) {
-                        battlefield[a][b] = battlefield[a + s][b];
-                        battleship.decks[j] = battlefield[a][b];}
-                        battlefield[a][b] = 0;battlefield[a][b-1] = 111;battlefield[a][b+1] = 111;
-                        battlefield[a+1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
-                        battlefield[a+2][b] = 0;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
-                        battlefield[a+3][b] = 0;battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
-                        battlefield[a+4][b] = 111;battlefield[a + 4][b - 1] = 111;battlefield[a + 4][b + 1] = 111;
-                        battlefield[a-1][b] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
-                        System.out.println("4 верх 2");
-                        break;
                }
-
-                    }
             }
 //            heavyCruiser fixme сделать условия не наложения корабля на корабль(while работает не совсем корректно)
 //                          и пока не повторяет цикл,если рандом непопадает в условия
@@ -279,221 +326,147 @@ while ((battlefield[a][b] == 0 || battlefield[a][b] == 111 || battlefield[a - 1]
          a = random.nextInt(10);
          b = random.nextInt(10);
         System.out.println(battlefield[a][b]);
+        int count = 0;
         for (int i = 0,st = 0; i < heavyCruiser1.decks.length; i++) {
             if (battlefield[a][b] != 0 && battlefield[a][b] != 111 && i < 1) {
                 st = battlefield[a][b];
 
-            if (a > 7 && b > 7) {
+            if (a > 5 && b > 5) {
                 if (battlefield[a - 1][b] != 0 && battlefield[a - 1][b] != 111 && battlefield[a - 2][b] != 0 &&
                         battlefield[a - 2][b] != 111) {
+                    count++;
                     heavyCruiser1.decks[0] = st;
                     heavyCruiser1.decks[1] = st - 10;
                     heavyCruiser1.decks[2] = st - 20;
                     if (a == 9 && b != 9) {    //ограждение корабля,куданельзя ставить др
-                        battlefield[a][b] = 0;
-                        battlefield[a][b - 1] = 111;
-                        battlefield[a][b + 1] = 111;
-                        battlefield[a - 1][b] = 0;
-                        battlefield[a - 1][b - 1] = 111;
-                        battlefield[a - 1][b + 1] = 111;
-                        battlefield[a - 2][b] = 0;
-                        battlefield[a - 2][b - 1] = 111;
-                        battlefield[a - 2][b + 1] = 111;
-                        battlefield[a - 3][b] = 111;
-                        battlefield[a - 3][b - 1] = 111;
-                        battlefield[a - 3][b + 1] = 111;
+                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                        battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                        battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;battlefield[a - 2][b + 1] = 111;
+                        battlefield[a - 3][b] = 111;battlefield[a - 3][b - 1] = 111;battlefield[a - 3][b + 1] = 111;
                         System.out.println("3 право низ 1");
                         break;
                     }
                     else
                         if (a != 9 && b == 9) {
-                            battlefield[a][b] = 0;
-                            battlefield[a][b - 1] = 111;
-                            battlefield[a - 1][b] = 0;
-                            battlefield[a - 1][b - 1] = 111;
-                            battlefield[a - 2][b] = 0;
-                            battlefield[a - 2][b - 1] = 111;
-                            battlefield[a - 3][b] = 111;
-                            battlefield[a - 3][b - 1] = 111;
-                            battlefield[a + 1][b - 1] = 111;
-                            battlefield[a + 1][b] = 111;
+                            battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                            battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;
+                            battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;
+                            battlefield[a - 3][b] = 111;battlefield[a - 3][b - 1] = 111;
+                            battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b] = 111;
                             System.out.println("3 право низ 2");
                             break;
                         }
                         else
                             if (a == 9 && b == 9) {
-                                battlefield[a][b] = 0;
-                                battlefield[a][b - 1] = 111;
-                                battlefield[a - 1][b] = 0;
-                                battlefield[a - 1][b - 1] = 111;
-                                battlefield[a - 2][b] = 0;
-                                battlefield[a - 2][b - 1] = 111;
-                                battlefield[a - 3][b] = 111;
-                                battlefield[a - 3][b - 1] = 111;
+                                battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;
+                                battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;
+                                battlefield[a - 3][b] = 111;battlefield[a - 3][b - 1] = 111;
                                 System.out.println("3 право низ 3");
                                 break;
                             }
                             else {
-                                battlefield[a][b] = 0;
-                                battlefield[a][b - 1] = 111;
-                                battlefield[a][b + 1] = 111;
-                                battlefield[a - 1][b] = 0;
-                                battlefield[a - 1][b - 1] = 111;
-                                battlefield[a - 1][b + 1] = 111;
-                                battlefield[a - 2][b] = 0;
-                                battlefield[a - 2][b - 1] = 111;
-                                battlefield[a - 2][b + 1] = 111;
-                                battlefield[a - 3][b] = 111;
-                                battlefield[a - 3][b - 1] = 111;
-                                battlefield[a - 3][b + 1] = 111;
-                                battlefield[a + 1][b - 1] = 111;
-                                battlefield[a + 1][b + 1] = 111;
-                                battlefield[a + 1][b] = 111;
+                                battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;battlefield[a - 2][b + 1] = 111;
+                                battlefield[a - 3][b] = 111;battlefield[a - 3][b - 1] = 111;battlefield[a - 3][b + 1] = 111;
+                                battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;battlefield[a + 1][b] = 111;
                                 System.out.println("3 право низ 4");
                                 break;
                             }
                 }
             }
             else
-                if (a > 7 && b < 2) {
+                if (a > 5 && b < 6) {
                     if (battlefield[a][b + 1] != 0 && battlefield[a][b + 1] != 111 && battlefield[a][b + 2] != 0 &&
                             battlefield[a][b + 2] != 111) {
+                        count++;
                         heavyCruiser1.decks[0] = st;
                         heavyCruiser1.decks[1] = st + 1;
                         heavyCruiser1.decks[2] = st + 2;
                         if (a == 9 && b != 0) {
-                            battlefield[a][b] = 0;
-                            battlefield[a - 1][b] = 111;
-                            battlefield[a][b + 1] = 0;
-                            battlefield[a - 1][b + 1] = 111;
-                            battlefield[a][b + 2] = 0;
-                            battlefield[a - 1][b + 2] = 111;
-                            battlefield[a][b + 3] = 111;
-                            battlefield[a - 1][b + 3] = 111;
-                            battlefield[a][b - 1] = 111;
-                            battlefield[a - 1][b - 1] = 111;
+                            battlefield[a][b] = 0;battlefield[a - 1][b] = 111;
+                            battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;
+                            battlefield[a][b + 2] = 0;battlefield[a - 1][b + 2] = 111;
+                            battlefield[a][b + 3] = 111;battlefield[a - 1][b + 3] = 111;
+                            battlefield[a][b - 1] = 111;battlefield[a - 1][b - 1] = 111;
                             System.out.println("3 лев низ 1");
                             break;
                         }
                         else
                             if (a != 9 && b == 0) {
-                                battlefield[a][b] = 0;
-                                battlefield[a - 1][b] = 111;
-                                battlefield[a + 1][b] = 111;
-                                battlefield[a][b + 1] = 0;
-                                battlefield[a - 1][b + 1] = 111;
-                                battlefield[a + 1][b + 1] = 111;
-                                battlefield[a][b + 2] = 0;
-                                battlefield[a - 1][b + 2] = 111;
-                                battlefield[a + 1][b + 2] = 111;
-                                battlefield[a][b + 3] = 111;
-                                battlefield[a - 1][b + 3] = 111;
-                                battlefield[a + 1][b + 3] = 111;
+                                battlefield[a][b] = 0;battlefield[a - 1][b] = 111;
+                                battlefield[a + 1][b] = 111;battlefield[a][b + 1] = 0;
+                                battlefield[a - 1][b + 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                battlefield[a][b + 2] = 0;battlefield[a - 1][b + 2] = 111;
+                                battlefield[a + 1][b + 2] = 111;battlefield[a][b + 3] = 111;
+                                battlefield[a - 1][b + 3] = 111;battlefield[a + 1][b + 3] = 111;
                                 System.out.println("3 лев низ 2");
                                 break;
                             }
                             else
                                 if (a == 9 && b == 0) {
-                                    battlefield[a][b] = 0;
-                                    battlefield[a - 1][b] = 111;
-                                    battlefield[a][b + 1] = 0;
-                                    battlefield[a - 1][b + 1] = 111;
-                                    battlefield[a][b + 2] = 0;
-                                    battlefield[a - 1][b + 2] = 111;
-                                    battlefield[a][b + 3] = 111;
-                                    battlefield[a - 1][b + 3] = 111;
+                                    battlefield[a][b] = 0;battlefield[a - 1][b] = 111;
+                                    battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;
+                                    battlefield[a][b + 2] = 0;battlefield[a - 1][b + 2] = 111;
+                                    battlefield[a][b + 3] = 111;battlefield[a - 1][b + 3] = 111;
                                     System.out.println("3 лев низ 3");
                                     break;
                                 }
                                 else {
-                                    battlefield[a][b] = 0;
-                                    battlefield[a - 1][b] = 111;
-                                    battlefield[a + 1][b] = 111;
-                                    battlefield[a][b + 1] = 0;
-                                    battlefield[a - 1][b + 1] = 111;
-                                    battlefield[a + 1][b + 1] = 111;
-                                    battlefield[a][b + 2] = 0;
-                                    battlefield[a - 1][b + 2] = 111;
-                                    battlefield[a + 1][b + 2] = 111;
-                                    battlefield[a][b + 3] = 111;
-                                    battlefield[a - 1][b + 3] = 111;
-                                    battlefield[a + 1][b + 3] = 111;
-                                    battlefield[a][b - 1] = 111;
-                                    battlefield[a - 1][b - 1] = 111;
-                                    battlefield[a + 1][b - 1] = 111;
+                                    battlefield[a][b] = 0;battlefield[a - 1][b] = 111;battlefield[a + 1][b] = 111;
+                                    battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                    battlefield[a][b + 2] = 0;battlefield[a - 1][b + 2] = 111;battlefield[a + 1][b + 2] = 111;
+                                    battlefield[a][b + 3] = 111;battlefield[a - 1][b + 3] = 111;battlefield[a + 1][b + 3] = 111;
+                                    battlefield[a][b - 1] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a + 1][b - 1] = 111;
                                     System.out.println("3 лев низ 4");
                                     break;
                                 }
                     }
                 }
                 else
-                    if (a < 3 && b < 3) {
-
+                    if (a < 6 && b < 6) {
                         if (battlefield[a + 1][b] != 0 && battlefield[a + 1][b] != 111 && battlefield[a + 2][b] != 0 &&
                                 battlefield[a + 2][b] != 111) {
+                            count++;
                             heavyCruiser1.decks[0] = st;
                             heavyCruiser1.decks[1] = st + 10;
                             heavyCruiser1.decks[2] = st + 20;
                             if (a != 0 && b == 0) {
-                                battlefield[a][b] = 0;
-                                battlefield[a][b + 1] = 111;
-                                battlefield[a + 1][b] = 0;
-                                battlefield[a - 1][b + 1] = 111;
-                                battlefield[a + 2][b] = 0;
-                                battlefield[a - 1][b + 1] = 111;
-                                battlefield[a + 3][b] = 111;
-                                battlefield[a - 1][b + 1] = 111;
-                                battlefield[a - 1][b] = 111;
-                                battlefield[a - 1][b + 1] = 111;
+                                battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                battlefield[a + 1][b] = 0;battlefield[a - 1][b + 1] = 111;
+                                battlefield[a + 2][b] = 0;battlefield[a - 1][b + 1] = 111;
+                                battlefield[a + 3][b] = 111;battlefield[a - 1][b + 1] = 111;
+                                battlefield[a - 1][b] = 111;battlefield[a - 1][b + 1] = 111;
                                 System.out.println("3 лев верх 1");
                                 break;
                             }
                             else
                                 if (a == 0 && b != 0) {
-                                    battlefield[a][b] = 0;
-                                    battlefield[a][b - 1] = 111;
-                                    battlefield[a][b + 1] = 111;
-                                    battlefield[a + 1][b] = 0;
-                                    battlefield[a + 1][b - 1] = 111;
-                                    battlefield[a + 1][b + 1] = 111;
-                                    battlefield[a + 2][b] = 0;
-                                    battlefield[a + 2][b - 1] = 111;
-                                    battlefield[a + 2][b + 1] = 111;
-                                    battlefield[a + 3][b] = 111;
-                                    battlefield[a + 3][b - 1] = 111;
-                                    battlefield[a + 3][b + 1] = 111;
+                                    battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                    battlefield[a][b + 1] = 111;battlefield[a + 1][b] = 0;
+                                    battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                    battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;
+                                    battlefield[a + 2][b + 1] = 111;battlefield[a + 3][b] = 111;
+                                    battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
                                     System.out.println("3 лев верх 2");
                                     break;
                                 }
                                 else
                                     if (a == 0 && b == 0) {
-                                        battlefield[a][b] = 0;
-                                        battlefield[a][b + 1] = 111;
-                                        battlefield[a + 1][b] = 0;
-                                        battlefield[a][b + 1] = 111;
-                                        battlefield[a + 2][b] = 0;
-                                        battlefield[a][b + 1] = 111;
-                                        battlefield[a + 3][b] = 111;
-                                        battlefield[a][b + 1] = 111;
+                                        battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                        battlefield[a + 1][b] = 0;battlefield[a][b + 1] = 111;
+                                        battlefield[a + 2][b] = 0;battlefield[a][b + 1] = 111;
+                                        battlefield[a + 3][b] = 111;battlefield[a][b + 1] = 111;
                                         System.out.println("3 лев верх 3");
                                         break;
                                     }
                                     else {
-                                        battlefield[a][b] = 0;
-                                        battlefield[a][b - 1] = 111;
-                                        battlefield[a][b + 1] = 111;
-                                        battlefield[a + 1][b] = 0;
-                                        battlefield[a + 1][b - 1] = 111;
-                                        battlefield[a + 1][b + 1] = 111;
-                                        battlefield[a + 2][b] = 0;
-                                        battlefield[a + 2][b - 1] = 111;
-                                        battlefield[a + 2][b + 1] = 111;
-                                        battlefield[a + 3][b] = 111;
-                                        battlefield[a + 3][b - 1] = 111;
-                                        battlefield[a + 3][b + 1] = 111;
-                                        battlefield[a - 1][b] = 111;
-                                        battlefield[a - 1][b - 1] = 111;
-                                        battlefield[a - 1][b + 1] = 111;
+                                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                        battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                        battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                        battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
+                                        battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
                                         System.out.println("3 лев верх 4");
                                         break;
                                     }
@@ -501,72 +474,46 @@ while ((battlefield[a][b] == 0 || battlefield[a][b] == 111 || battlefield[a - 1]
 
                     }
                     else
-                        if (a < 3 && b > 7) {
+                        if (a < 6 && b > 5) {
                             if (battlefield[a + 1][b] != 0 && battlefield[a + 1][b] != 111 && battlefield[a + 2][b] != 0 &&
                                     battlefield[a + 2][b] != 111) {
+                                count++;
                                 heavyCruiser1.decks[0] = st;
                                 heavyCruiser1.decks[1] = st + 10;
                                 heavyCruiser1.decks[2] = st + 20;
                                 if (a != 0 && b == 9) {
-                                    battlefield[a][b] = 0;
-                                    battlefield[a][b - 1] = 111;
-                                    battlefield[a + 1][b] = 0;
-                                    battlefield[a + 1][b - 1] = 111;
-                                    battlefield[a + 2][b] = 0;
-                                    battlefield[a + 2][b - 1] = 111;
-                                    battlefield[a + 3][b] = 111;
-                                    battlefield[a + 3][b - 1] = 111;
-                                    battlefield[a - 1][b] = 111;
-                                    battlefield[a - 1][b - 1] = 111;
+                                    battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                    battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;
+                                    battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;
+                                    battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;
+                                    battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;
                                     System.out.println("3 прав верх 1");
                                     break;
                                 }
                                 else
                                     if (a == 0 && b != 9) {
-                                        battlefield[a][b] = 0;
-                                        battlefield[a][b - 1] = 111;
-                                        battlefield[a][b + 1] = 111;
-                                        battlefield[a + 1][b] = 0;
-                                        battlefield[a + 1][b - 1] = 111;
-                                        battlefield[a + 1][b + 1] = 111;
-                                        battlefield[a + 2][b] = 0;
-                                        battlefield[a + 2][b - 1] = 111;
-                                        battlefield[a + 2][b + 1] = 111;
-                                        battlefield[a + 3][b] = 111;
-                                        battlefield[a + 3][b - 1] = 111;
-                                        battlefield[a + 3][b + 1] = 111;
+                                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                        battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                        battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                        battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
                                         System.out.println("3 прав верх 2");
                                         break;
                                     }
                                     else
                                         if (a == 0 && b == 9) {
-                                            battlefield[a][b] = 0;
-                                            battlefield[a][b + 1] = 111;
-                                            battlefield[a + 1][b] = 0;
-                                            battlefield[a + 1][b - 1] = 111;
-                                            battlefield[a + 2][b] = 0;
-                                            battlefield[a + 2][b - 1] = 111;
-                                            battlefield[a + 3][b] = 111;
-                                            battlefield[a + 3][b - 1] = 111;
+                                            battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                            battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;
+                                            battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;
+                                            battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;
                                             System.out.println("3 прав верх 3");
                                             break;
                                         }
                                         else {
-                                            battlefield[a][b] = 0;
-                                            battlefield[a][b - 1] = 111;
-                                            battlefield[a][b + 1] = 111;
-                                            battlefield[a + 1][b] = 0;
-                                            battlefield[a + 1][b - 1] = 111;
-                                            battlefield[a + 1][b + 1] = 111;
-                                            battlefield[a + 2][b] = 0;
-                                            battlefield[a + 2][b - 1] = 111;
-                                            battlefield[a + 2][b + 1] = 111;
-                                            battlefield[a + 3][b] = 111;
-                                            battlefield[a + 3][b - 1] = 111;
-                                            battlefield[a + 3][b + 1] = 111;
-                                            battlefield[a - 1][b] = 111;
-                                            battlefield[a - 1][b - 1] = 111;
-                                            battlefield[a - 1][b + 1] = 111;
+                                            battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                            battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                            battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                            battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
+                                            battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
                                             System.out.println("3 прав верх 4");
                                             break;
                                         }
@@ -574,12 +521,391 @@ while ((battlefield[a][b] == 0 || battlefield[a][b] == 111 || battlefield[a - 1]
 
                         }
              }
-        }}
-            for (int j = 0; j < battleship.decks.length; j++) {
+        } if (count==1){break;}}
+//          fixme 2й крейсер
+        while ((battlefield[a][b] == 0 || battlefield[a][b] == 111 || battlefield[a - 1][b] == 0 || battlefield[a - 1][b] == 111
+                || battlefield[a - 2][b] == 0 || battlefield[a - 2][b] == 111)){  // при такой проверке иногда выходит за границы поля
+            a = random.nextInt(10);
+            b = random.nextInt(10);
+            System.out.println(battlefield[a][b]);
+            int count = 0;
+            for (int i = 0,st = 0; i < heavyCruiser2.decks.length; i++) {
+                if (battlefield[a][b] != 0 && battlefield[a][b] != 111 && i < 1) {
+                    st = battlefield[a][b];
+
+                    if (a > 5 && b > 5) {
+                        if (battlefield[a - 1][b] != 0 && battlefield[a - 1][b] != 111 && battlefield[a - 2][b] != 0 &&
+                                battlefield[a - 2][b] != 111) {
+                            count++;
+                            heavyCruiser2.decks[0] = st;
+                            heavyCruiser2.decks[1] = st - 10;
+                            heavyCruiser2.decks[2] = st - 20;
+                            if (a == 9 && b != 9) {    //ограждение корабля,куданельзя ставить др
+                                battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;battlefield[a - 2][b + 1] = 111;
+                                battlefield[a - 3][b] = 111;battlefield[a - 3][b - 1] = 111;battlefield[a - 3][b + 1] = 111;
+                                System.out.println("3 право низ 1");
+                                break;
+                            }
+                            else
+                                if (a != 9 && b == 9) {
+                                    battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                    battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;
+                                    battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;
+                                    battlefield[a - 3][b] = 111;battlefield[a - 3][b - 1] = 111;
+                                    battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b] = 111;
+                                    System.out.println("3 право низ 2");
+                                    break;
+                                }
+                                else
+                                    if (a == 9 && b == 9) {
+                                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                        battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;
+                                        battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;
+                                        battlefield[a - 3][b] = 111;battlefield[a - 3][b - 1] = 111;
+                                        System.out.println("3 право низ 3");
+                                        break;
+                                    }
+                                    else {
+                                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                        battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                        battlefield[a - 2][b] = 0;battlefield[a - 2][b - 1] = 111;battlefield[a - 2][b + 1] = 111;
+                                        battlefield[a - 3][b] = 111;battlefield[a - 3][b - 1] = 111;battlefield[a - 3][b + 1] = 111;
+                                        battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;battlefield[a + 1][b] = 111;
+                                        System.out.println("3 право низ 4");
+                                        break;
+                                    }
+                        }
+                    }
+                    else
+                        if (a > 5 && b < 6) {
+                            if (battlefield[a][b + 1] != 0 && battlefield[a][b + 1] != 111 && battlefield[a][b + 2] != 0 &&
+                                    battlefield[a][b + 2] != 111) {
+                                count++;
+                                heavyCruiser2.decks[0] = st;
+                                heavyCruiser2.decks[1] = st + 1;
+                                heavyCruiser2.decks[2] = st + 2;
+                                if (a == 9 && b != 0) {
+                                    battlefield[a][b] = 0;battlefield[a - 1][b] = 111;
+                                    battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;
+                                    battlefield[a][b + 2] = 0;battlefield[a - 1][b + 2] = 111;
+                                    battlefield[a][b + 3] = 111;battlefield[a - 1][b + 3] = 111;
+                                    battlefield[a][b - 1] = 111;battlefield[a - 1][b - 1] = 111;
+                                    System.out.println("3 лев низ 1");
+                                    break;
+                                }
+                                else
+                                    if (a != 9 && b == 0) {
+                                        battlefield[a][b] = 0;battlefield[a - 1][b] = 111;
+                                        battlefield[a + 1][b] = 111;battlefield[a][b + 1] = 0;
+                                        battlefield[a - 1][b + 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                        battlefield[a][b + 2] = 0;battlefield[a - 1][b + 2] = 111;
+                                        battlefield[a + 1][b + 2] = 111;battlefield[a][b + 3] = 111;
+                                        battlefield[a - 1][b + 3] = 111;battlefield[a + 1][b + 3] = 111;
+                                        System.out.println("3 лев низ 2");
+                                        break;
+                                    }
+                                    else
+                                        if (a == 9 && b == 0) {
+                                            battlefield[a][b] = 0;battlefield[a - 1][b] = 111;
+                                            battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;
+                                            battlefield[a][b + 2] = 0;battlefield[a - 1][b + 2] = 111;
+                                            battlefield[a][b + 3] = 111;battlefield[a - 1][b + 3] = 111;
+                                            System.out.println("3 лев низ 3");
+                                            break;
+                                        }
+                                        else {
+                                            battlefield[a][b] = 0;battlefield[a - 1][b] = 111;battlefield[a + 1][b] = 111;
+                                            battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                            battlefield[a][b + 2] = 0;battlefield[a - 1][b + 2] = 111;battlefield[a + 1][b + 2] = 111;
+                                            battlefield[a][b + 3] = 111;battlefield[a - 1][b + 3] = 111;battlefield[a + 1][b + 3] = 111;
+                                            battlefield[a][b - 1] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a + 1][b - 1] = 111;
+                                            System.out.println("3 лев низ 4");
+                                            break;
+                                        }
+                            }
+                        }
+                        else
+                            if (a < 6 && b < 6) {
+                                if (battlefield[a + 1][b] != 0 && battlefield[a + 1][b] != 111 && battlefield[a + 2][b] != 0 &&
+                                        battlefield[a + 2][b] != 111) {
+                                    count++;
+                                    heavyCruiser2.decks[0] = st;
+                                    heavyCruiser2.decks[1] = st + 10;
+                                    heavyCruiser2.decks[2] = st + 20;
+                                    if (a != 0 && b == 0) {
+                                        battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                        battlefield[a + 1][b] = 0;battlefield[a - 1][b + 1] = 111;
+                                        battlefield[a + 2][b] = 0;battlefield[a - 1][b + 1] = 111;
+                                        battlefield[a + 3][b] = 111;battlefield[a - 1][b + 1] = 111;
+                                        battlefield[a - 1][b] = 111;battlefield[a - 1][b + 1] = 111;
+                                        System.out.println("3 лев верх 1");
+                                        break;
+                                    }
+                                    else
+                                        if (a == 0 && b != 0) {
+                                            battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                            battlefield[a][b + 1] = 111;battlefield[a + 1][b] = 0;
+                                            battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                            battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;
+                                            battlefield[a + 2][b + 1] = 111;battlefield[a + 3][b] = 111;
+                                            battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
+                                            System.out.println("3 лев верх 2");
+                                            break;
+                                        }
+                                        else
+                                            if (a == 0 && b == 0) {
+                                                battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 1][b] = 0;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 2][b] = 0;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 3][b] = 111;battlefield[a][b + 1] = 111;
+                                                System.out.println("3 лев верх 3");
+                                                break;
+                                            }
+                                            else {
+                                                battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                                battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                                battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
+                                                battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                                System.out.println("3 лев верх 4");
+                                                break;
+                                            }
+                                }
+
+                            }
+                            else
+                                if (a < 6 && b > 5) {
+                                    if (battlefield[a + 1][b] != 0 && battlefield[a + 1][b] != 111 && battlefield[a + 2][b] != 0 &&
+                                            battlefield[a + 2][b] != 111) {
+                                        count++;
+                                        heavyCruiser2.decks[0] = st;
+                                        heavyCruiser2.decks[1] = st + 10;
+                                        heavyCruiser2.decks[2] = st + 20;
+                                        if (a != 0 && b == 9) {
+                                            battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                            battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;
+                                            battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;
+                                            battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;
+                                            battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;
+                                            System.out.println("3 прав верх 1");
+                                            break;
+                                        }
+                                        else
+                                            if (a == 0 && b != 9) {
+                                                battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                                battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                                battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
+                                                System.out.println("3 прав верх 2");
+                                                break;
+                                            }
+                                            else
+                                                if (a == 0 && b == 9) {
+                                                    battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                                    battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;
+                                                    battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;
+                                                    battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;
+                                                    System.out.println("3 прав верх 3");
+                                                    break;
+                                                }
+                                                else {
+                                                    battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                                    battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                                    battlefield[a + 2][b] = 0;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                                    battlefield[a + 3][b] = 111;battlefield[a + 3][b - 1] = 111;battlefield[a + 3][b + 1] = 111;
+                                                    battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                                    System.out.println("3 прав верх 4");
+                                                    break;
+                                                }
+                                    }
+
+                                }
+                }
+            } if (count==1){break;}}
+        // fixme Легкий крейсер
+
+        while ((battlefield[a][b] == 0 || battlefield[a][b] == 111 || battlefield[a - 1][b] == 0 || battlefield[a - 1][b] == 111)){  // при такой проверке иногда выходит за границы поля
+            a = random.nextInt(10);
+            b = random.nextInt(10);
+            System.out.println(battlefield[a][b]);
+            int count = 0;
+            for (int i = 0,st = 0; i < lightCruiser1.decks.length; i++) {
+                if (battlefield[a][b] != 0 && battlefield[a][b] != 111 && i < 1) {
+                    st = battlefield[a][b];
+
+                    if (a > 5 && b > 5) {
+                        if (battlefield[a - 1][b] != 0 && battlefield[a - 1][b] != 111) {
+                            count++;
+                            lightCruiser1.decks[0] = st;
+                            lightCruiser1.decks[1] = st - 10;
+                            if (a == 9 && b != 9) {    //ограждение корабля,куданельзя ставить др
+                                battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                battlefield[a - 2][b] = 111;battlefield[a - 2][b - 1] = 111;battlefield[a - 2][b + 1] = 111;
+                                System.out.println("3 право низ 1");
+                                break;
+                            }
+                            else
+                                if (a != 9 && b == 9) {
+                                    battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                    battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;
+                                    battlefield[a - 2][b] = 111;battlefield[a - 2][b - 1] = 111;
+                                    battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b] = 111;
+                                    System.out.println("3 право низ 2");
+                                    break;
+                                }
+                                else
+                                    if (a == 9 && b == 9) {
+                                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                        battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;
+                                        battlefield[a - 2][b] = 111;battlefield[a - 2][b - 1] = 111;
+                                        System.out.println("3 право низ 3");
+                                        break;
+                                    }
+                                    else {
+                                        battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                        battlefield[a - 1][b] = 0;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                        battlefield[a - 2][b] = 111;battlefield[a - 2][b - 1] = 111;battlefield[a - 2][b + 1] = 111;
+                                        battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;battlefield[a + 1][b] = 111;
+                                        System.out.println("3 право низ 4");
+                                        break;
+                                    }
+                        }
+                    }
+                    else
+                        if (a > 5 && b < 6) {
+                            if (battlefield[a][b + 1] != 0 && battlefield[a][b + 1] != 111) {
+                                count++;
+                                lightCruiser1.decks[0] = st;
+                                lightCruiser1.decks[1] = st + 1;
+                                if (a == 9 && b != 0) {
+                                    battlefield[a][b] = 0;battlefield[a - 1][b] = 111;
+                                    battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;
+                                    battlefield[a][b + 2] = 111;battlefield[a - 1][b + 2] = 111;
+                                    battlefield[a][b - 1] = 111;battlefield[a - 1][b - 1] = 111;
+                                    System.out.println("3 лев низ 1");
+                                    break;
+                                }
+                                else
+                                    if (a != 9 && b == 0) {
+                                        battlefield[a][b] = 0;battlefield[a - 1][b] = 111;battlefield[a + 1][b] = 111;
+                                        battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                        battlefield[a][b + 2] = 111;battlefield[a - 1][b + 2] = 111;battlefield[a + 1][b + 2] = 111;
+                                        System.out.println("3 лев низ 2");
+                                        break;
+                                    }
+                                    else
+                                        if (a == 9 && b == 0) {
+                                            battlefield[a][b] = 0;battlefield[a - 1][b] = 111;
+                                            battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;
+                                            battlefield[a][b + 2] = 111;battlefield[a - 1][b + 2] = 111;
+                                            System.out.println("3 лев низ 3");
+                                            break;
+                                        }
+                                        else {
+                                            battlefield[a][b] = 0;battlefield[a - 1][b] = 111;battlefield[a + 1][b] = 111;
+                                            battlefield[a][b + 1] = 0;battlefield[a - 1][b + 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                            battlefield[a][b + 2] = 111;battlefield[a - 1][b + 2] = 111;battlefield[a + 1][b + 2] = 111;
+                                            battlefield[a][b - 1] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a + 1][b - 1] = 111;
+                                            System.out.println("3 лев низ 4");
+                                            break;
+                                        }
+                            }
+                        }
+                        else
+                            if (a < 6 && b < 6) {
+                                if (battlefield[a + 1][b] != 0 && battlefield[a + 1][b] != 111) {
+                                    count++;
+                                    lightCruiser1.decks[0] = st;
+                                    lightCruiser1.decks[1] = st + 10;
+                                    if (a != 0 && b == 0) {
+                                        battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                        battlefield[a + 1][b] = 0;battlefield[a - 1][b + 1] = 111;
+                                        battlefield[a + 2][b] = 111;battlefield[a - 1][b + 1] = 111;
+                                        battlefield[a - 1][b] = 111;battlefield[a - 1][b + 1] = 111;
+                                        System.out.println("3 лев верх 1");
+                                        break;
+                                    }
+                                    else
+                                        if (a == 0 && b != 0) {
+                                            battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                            battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                            battlefield[a + 2][b] = 111;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                            System.out.println("3 лев верх 2");
+                                            break;
+                                        }
+                                        else
+                                            if (a == 0 && b == 0) {
+                                                battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 1][b] = 0;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 2][b] = 111;battlefield[a][b + 1] = 111;
+                                                System.out.println("3 лев верх 3");
+                                                break;
+                                            }
+                                            else {
+                                                battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                                battlefield[a + 2][b] = 111;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                                battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                                System.out.println("3 лев верх 4");
+                                                break;
+                                            }
+                                }
+
+                            }
+                            else
+                                if (a < 6 && b > 5) {
+                                    if (battlefield[a + 1][b] != 0 && battlefield[a + 1][b] != 111)
+                                             {
+                                        count++;
+                                        lightCruiser1.decks[0] = st;
+                                        lightCruiser1.decks[1] = st + 10;
+                                        if (a != 0 && b == 9) {
+                                            battlefield[a][b] = 0;battlefield[a][b - 1] = 111;
+                                            battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;
+                                            battlefield[a + 2][b] = 111;battlefield[a + 2][b - 1] = 111;
+                                            battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;
+                                            System.out.println("3 прав верх 1");
+                                            break;
+                                        }
+                                        else
+                                            if (a == 0 && b != 9) {
+                                                battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                                battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                                battlefield[a + 2][b] = 111;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                                System.out.println("3 прав верх 2");
+                                                break;
+                                            }
+                                            else
+                                                if (a == 0 && b == 9) {
+                                                    battlefield[a][b] = 0;battlefield[a][b + 1] = 111;
+                                                    battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;
+                                                    battlefield[a + 2][b] = 111;battlefield[a + 2][b - 1] = 111;
+
+                                                    System.out.println("3 прав верх 3");
+                                                    break;
+                                                }
+                                                else {
+                                                    battlefield[a][b] = 0;battlefield[a][b - 1] = 111;battlefield[a][b + 1] = 111;
+                                                    battlefield[a + 1][b] = 0;battlefield[a + 1][b - 1] = 111;battlefield[a + 1][b + 1] = 111;
+                                                    battlefield[a + 2][b] = 111;battlefield[a + 2][b - 1] = 111;battlefield[a + 2][b + 1] = 111;
+                                                    battlefield[a - 1][b] = 111;battlefield[a - 1][b - 1] = 111;battlefield[a - 1][b + 1] = 111;
+                                                    System.out.println("3 прав верх 4");
+                                                    break;
+                                                }
+                                    }
+
+                                }
+                }
+            } if (count==1){break;}}
+
+            for (int j = 0; j < battleship.decks.length; j++) {//координаты линкора
             System.out.print(" " + battleship.decks[j]);
         }
         System.out.println();
-        for (int j = 0; j < heavyCruiser1.decks.length; j++) {
+        for (int j = 0; j < heavyCruiser1.decks.length; j++) {//координаты крейсера
             System.out.print(" " + heavyCruiser1.decks[j]);
         }
         System.out.println();

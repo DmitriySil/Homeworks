@@ -1,7 +1,7 @@
 package Homework.SeaBattle;
 
-public class Destroyer extends Ships{
-    protected int[] decks = new int[1];
+public class LightCruiser extends Ships {
+    protected int[] decks = new int[2];
     protected boolean afloat = true;
 
     @Override
@@ -25,5 +25,4 @@ public class Destroyer extends Ships{
     public void addDeck(){
 
     }
-
 }

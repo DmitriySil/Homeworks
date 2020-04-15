@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Battle {
     public void start() {
         int[][] battlefield = new int[10][10];
-        int count = 0;
+        int countHC1 = 0,countBS = 0,countHC2 = 0,countLC1 = 0,countLC2 = 0,countLC3 = 0,countD1 = 0,countD2 = 0,
+                countD3 = 0,countD4 = 0;
 
         for (int i = 0; i < battlefield.length; ++i) {
             for (int j = 0; j < battlefield.length; ++j) {
@@ -17,7 +18,15 @@ public class Battle {
         Battleship battleship = new Battleship();
         HeavyCruiser heavyCruiser1 = new HeavyCruiser();
         HeavyCruiser heavyCruiser2 = new HeavyCruiser();
-        PrepareForBattle prepareForBattle = new PrepareForBattle(battleship,heavyCruiser1,heavyCruiser2);
+        LightCruiser lightCruiser1 = new LightCruiser();
+        LightCruiser lightCruiser2 = new LightCruiser();
+        LightCruiser lightCruiser3 = new LightCruiser();
+        Destroyer destroyer1 = new Destroyer();
+        Destroyer destroyer2 = new Destroyer();
+        Destroyer destroyer3 = new Destroyer();
+        Destroyer destroyer4 = new Destroyer();
+        PrepareForBattle prepareForBattle = new PrepareForBattle(battleship,heavyCruiser1,heavyCruiser2,lightCruiser1,
+                lightCruiser2,lightCruiser3,destroyer1,destroyer2,destroyer3,destroyer4);
         prepareForBattle.prepare();
         System.out.println("Бой начался");
         while (true) {
@@ -27,7 +36,7 @@ public class Battle {
             char coordinates = scanner1.next().charAt(0);
             System.out.println("Введите коректировку '1,2,3,4,5,6,7,8,9,10'1");
             int coordinates2 = scanner2.nextInt();
-
+            int count1 = 0;
             System.out.println(coordinates);
             int a = 0, b = 0;
 //        сравнение введенныхкоординат с цифрами
@@ -55,26 +64,91 @@ public class Battle {
                 case 9: a = 8;break;
                 case 10: a = 9;break;
             }
-            System.out.println(battlefield[a][b]);
-            for (int j = 0; j < battleship.decks.length; j++) {
+            System.out.println(battlefield[a][b]);// координаты введенные с клавиатуры(для сверки)
+            for (int j = 0; j < battleship.decks.length; j++) {//координаты линкора,для проверки стрельбы(убрать или закоментить)
                 System.out.print(" " + battleship.decks[j]);
             }
             System.out.println();
-            for (int i = 0; i < battleship.decks.length; i++) {         // Реализация стрельбы
+            for (int i = 0; i < battleship.decks.length; i++) {// Реализация стрельбы
                 if (battleship.afloat && battleship.decks[i] == battlefield[a][b]) {
                         battleship.decks[i] = 0;
-                        count++;
-                        if (count == 4) {
+                        countBS++;
+                        if (countBS == 4) {
                             battleship.setAfloat(false);
-                            System.out.println("sunk");
+                            System.out.println("Линкор потоплен");
+                            count1++;
                             break;
                         }
-                        System.out.println("hit");
-                        break;
-                }if (i<3)
-                    continue;
-                System.out.println("miss");
+                        System.out.println("Попадание");
+                        count1++;
+                       break;
+                }
             }
+            for (int i = 0; i < heavyCruiser1.decks.length; i++) {
+                if (heavyCruiser1.afloat && heavyCruiser1.decks[i] == battlefield[a][b]) {
+                    heavyCruiser1.decks[i] = 0;
+                    countHC1++;
+                    if (countHC1 == 3) {
+                       heavyCruiser1.setAfloat(false);
+                        System.out.println("Тяжелый крейсер потоплен");
+                        count1++;
+                        break;
+                    }
+                    System.out.println("Попадание");
+                    count1++;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < heavyCruiser1.decks.length; i++) {
+                if (heavyCruiser2.afloat && heavyCruiser2.decks[i] == battlefield[a][b]) {
+                    heavyCruiser2.decks[i] = 0;
+                    countHC2++;
+                    if (countHC2 == 3) {
+                        heavyCruiser2.setAfloat(false);
+                        System.out.println("Тяжелый крейсер потоплен");
+                        count1++;
+                        break;
+                    }
+                    System.out.println("Попадание");
+                    count1++;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < lightCruiser1.decks.length; i++) {
+                if (lightCruiser1.afloat && lightCruiser1.decks[i] == battlefield[a][b]) {
+                    lightCruiser1.decks[i] = 0;
+                    countLC1++;
+                    if (countLC1 == 2) {
+                        lightCruiser1.setAfloat(false);
+                        System.out.println("Легкий крейсер потоплен");
+                        count1++;
+                        break;
+                    }
+                    System.out.println("Попадание");
+                    count1++;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < lightCruiser2.decks.length; i++) {
+                if (lightCruiser2.afloat && lightCruiser2.decks[i] == battlefield[a][b]) {
+                    lightCruiser2.decks[i] = 0;
+                    countLC2++;
+                    if (countLC2 == 2) {
+                        lightCruiser2.setAfloat(false);
+                        System.out.println("Легкий крейсер потоплен");
+                        count1++;
+                        break;
+                    }
+                    System.out.println("Попадание");
+                    count1++;
+                    break;
+                }
+            }
+        if (count1==0){System.out.println("Промах");}
+
 
         }
     }
