@@ -22,8 +22,5 @@ public class Destroyer extends Ships{
         this.afloat = afloat;
     }
 
-    public void addDeck(){
-
-    }
 
 }
