@@ -1,13 +1,13 @@
 package Homework.SeaBattle;
 
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Battle {
     public void start() {
         int[][] battlefield = new int[10][10];
-        int countHC1 = 0,countBS = 0,countHC2 = 0,countLC1 = 0,countLC2 = 0,countLC3 = 0,countD1 = 0,countD2 = 0,
-                countD3 = 0,countD4 = 0;
-
+        int countHC1 = 0,countBS = 0,countHC2 = 0,countLC1 = 0,countLC2 = 0,countLC3 = 0;
+        LocalTime gameTame = LocalTime.now();
         for (int i = 0; i < battlefield.length; ++i) {
             for (int j = 0; j < battlefield.length; ++j) {
                 battlefield[i][j] = (i * 10) + j + 1;
@@ -100,7 +100,7 @@ public class Battle {
                 }
             }
 
-            for (int i = 0; i < heavyCruiser1.decks.length; i++) {
+            for (int i = 0; i < heavyCruiser2.decks.length; i++) {
                 if (heavyCruiser2.afloat && heavyCruiser2.decks[i] == battlefield[a][b]) {
                     heavyCruiser2.decks[i] = 0;
                     countHC2++;
@@ -146,6 +146,72 @@ public class Battle {
                     count1++;
                     break;
                 }
+            }
+
+            for (int i = 0; i < lightCruiser3.decks.length; i++) {
+                if (lightCruiser3.afloat && lightCruiser3.decks[i] == battlefield[a][b]) {
+                    lightCruiser3.decks[i] = 0;
+                    countLC3++;
+                    if (countLC3 == 2) {
+                        lightCruiser3.setAfloat(false);
+                        System.out.println("Легкий крейсер потоплен");
+                        count1++;
+                        break;
+                    }
+                    System.out.println("Попадание");
+                    count1++;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < destroyer1.decks.length; i++) {
+                if (destroyer1.afloat && destroyer1.decks[i] == battlefield[a][b]) {
+                    destroyer1.decks[i] = 0;
+                        destroyer1.setAfloat(false);
+                        System.out.println("Эсминец потоплен");
+                        count1++;
+                        break;
+                }
+            }
+
+            for (int i = 0; i < destroyer2.decks.length; i++) {
+                if (destroyer2.afloat && destroyer2.decks[i] == battlefield[a][b]) {
+                    destroyer2.decks[i] = 0;
+                        destroyer2.setAfloat(false);
+                        System.out.println("Эсминец потоплен");
+                        count1++;
+                        break;
+                }
+            }
+
+            for (int i = 0; i < destroyer3.decks.length; i++) {
+                if (destroyer3.afloat && destroyer3.decks[i] == battlefield[a][b]) {
+                    destroyer3.decks[i] = 0;
+                    destroyer3.setAfloat(false);
+                    System.out.println("Эсминец потоплен");
+                    count1++;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < destroyer4.decks.length; i++) {
+                if (destroyer4.afloat && destroyer4.decks[i] == battlefield[a][b]) {
+                    destroyer4.decks[i] = 0;
+                    destroyer4.setAfloat(false);
+                    System.out.println("Эсминец потоплен");
+                    count1++;
+                    break;
+                }
+            }
+            if (!battleship.afloat && !heavyCruiser1.afloat && !heavyCruiser2.afloat && !lightCruiser1.afloat &&
+            !lightCruiser2.afloat && !lightCruiser3.afloat && !destroyer1.afloat && !destroyer2.afloat && !destroyer3.afloat
+            && !destroyer4.afloat){
+                System.out.println("Все корабли потоплены,победа");
+                break;
+            }
+            if (LocalTime.now().isAfter(gameTame.plusMinutes(5))){
+                System.out.println("Время вышло,вы проиграли");
+                break;
             }
         if (count1==0){System.out.println("Промах");}
 
