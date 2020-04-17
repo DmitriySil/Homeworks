@@ -43,6 +43,7 @@ public class Farmer implements CollectRes {
     }
     public void driveAway(){
 
+
     }
 
     public void feed(Pet[] pets){
