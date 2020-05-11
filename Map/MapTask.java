@@ -2,6 +2,7 @@ package Homework.Map;
 
 import ru.ifmo.base.Lesson15.User;
 
+import java.security.Key;
 import java.util.*;
 
 public class MapTask {
@@ -24,7 +25,7 @@ public class MapTask {
         for (Map.Entry<String, Integer>entry:month.entrySet()){
             if (entry.getKey().equals(list.get(i))){
                 entry.setValue(entry.getValue()+1);
-            }
+            }//else {month.put(list.get(),1)}
           }
         }
         return month;
@@ -50,24 +51,31 @@ public class MapTask {
         }
         return count;
     }
-
-    private static TreeSet<String> sortWord(String text){
-        int one=0,two=0,three=0,four=0,five=0,six=0,seven=0,eight=0;
+    //  2. написать метод, который собирает все слова в группы по количеству букв:
+    //  например, в одну группу попадут слова: 3 - [the, war, jar, get, met...], в другую 2 - [on, up, no, of...]
+    private static Map<Integer,String> sortWord(String text){
         String[] splitText = text.split(" ");
-        for (String stText:splitText){
-            if (stText.length() == 1){
-                one++;
-            }if (stText.length()==4){
-                four++;
-            }
+        Map<Integer,String> sortW = new HashMap<>();
+        for (int i = 0; i <splitText.length ; i++) {
+            if (sortW.containsKey(splitText[i].length()) && !sortW.getOrDefault(splitText[i].length(),splitText[i]).equals(splitText[i])){
+                sortW.replace(splitText[i].length(),sortW.get(splitText[i].length()),sortW.get(splitText[i].length())+" "+splitText[i]);
+            }else
+            sortW.put(splitText[i].length(),splitText[i]);
         }
-        String[] one1 = new String[2];
-        one1[0] = "g";
-        one1[1] = "d";
-        String[] four1 = new String[four];
-        four1[0] = "t";
-        //        treeSet.addAll(Arrays.asList(four1));
-        return new TreeSet<>(Arrays.asList(one1));
+        return sortW;
+    }
+    //  4. Вывести частоту встречаемости букв анг алфавита в данном тексте. Вывести в процентах для каждой буквы
+    private static Map<Character,Integer> sortAlp(String text){
+        char[] charText = text.toCharArray();
+        Map<Character,Integer> characterMap = new TreeMap<>();
+        for (int i = 0; i <charText.length ; i++) {
+            if (characterMap.containsKey(charText[i])){
+                characterMap.replace(charText[i],characterMap.get(charText[i]),characterMap.get(charText[i])+1);
+            }else
+            characterMap.put(charText[i],1);
+
+        }
+        return characterMap;
     }
     public static void main(String[] args) {
         // TODO:: написать статический метод, который приннимает на вход
@@ -130,7 +138,10 @@ public class MapTask {
                 " sometimes on purpose injected humour and the like"; // !!! в тексте содержатся только буквы и пробельные символы !!!
 
         System.out.println("Task 4.1: "+retWord(text,"a"));
-        System.out.println(sortWord(text));
+        System.out.println("Task 4.2: "+sortWord(text));
+        System.out.println("Task 4.3: "+sortAlp(text));
+
+
     }
 
 }
