@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class Server {
@@ -17,7 +18,7 @@ public class Server {
 
     public void testServer() throws IOException, ClassNotFoundException {
         LinkedBlockingDeque<Message> messages = new LinkedBlockingDeque<>();
-        List<ServerReader> serverReaders = new LinkedList<>();
+        CopyOnWriteArraySet<ServerReader> serverReaders = new CopyOnWriteArraySet<>();
         try {
             ServerSocket serverSocket = new ServerSocket(8090);
             System.out.println("Server start");
@@ -85,9 +86,9 @@ public class Server {
 class ServerWriter extends Thread{
     LinkedBlockingDeque<Message> messages;
     Connection connection;
-    List<ServerReader> serverReaders;
+    CopyOnWriteArraySet<ServerReader> serverReaders;
 
-    public ServerWriter(Connection connection, LinkedBlockingDeque<Message> messages, List<ServerReader> serverReaders) {
+    public ServerWriter(Connection connection, LinkedBlockingDeque<Message> messages, CopyOnWriteArraySet<ServerReader> serverReaders) {
         this.serverReaders = serverReaders;
         this.messages = messages;
         this.connection = connection;
@@ -98,7 +99,7 @@ class ServerWriter extends Thread{
 
         try {
             Message message = messages.take();
-            System.out.println(message+" writer");
+            //System.out.println(message+" writer");
             for(ServerReader reader:serverReaders){
                 reader.connection.sendMessage(message);
             }
