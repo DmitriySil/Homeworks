@@ -5,6 +5,7 @@ import ru.ifmo.base.lesson19.messages.SimpleMessage;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -37,22 +38,28 @@ public class Client {
             connection.sendMessage(message);
            // Message fromServer = connection.readMessage();
            // System.out.println("ответ от сервера " + fromServer);
-        System.out.println("Отправил");
+        //System.out.println("Отправил");
 
     }
   public void start() throws Exception {
       Scanner scanner = new Scanner(System.in);
       String text;
-
+      String name;
+      System.out.println("Write name");
+      name = scanner.nextLine();
       System.out.println("Write message ");
-
+      Socket socket = new Socket("127.0.0.1", 8090);
+      Connection connection = new Connection(socket);
+      Thread thread = new Thread(new Reader(connection));
+      thread.start();
           while (true) {
-              Socket socket = new Socket("127.0.0.1", 8090);
-              Connection connection = new Connection(socket);
-                  text = scanner.nextLine();
-                  sendAndPrintMessage(new Message(text),connection);
-                  Thread thread = new Thread(new Reader(connection));
-                  thread.start();
+              text = scanner.nextLine();
+              if ("exit".equalsIgnoreCase(text)){
+                 // socket.close();
+                  System.exit(1);
+              }
+              sendAndPrintMessage(new Message(text,name),connection);
+
               }
           }
 
@@ -62,35 +69,42 @@ public class Client {
         Client client = new Client();
         try {
             client.start();
-        }catch (IOException ignored){}
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-class Reader implements Runnable{
-    Connection connection;
-
-    public Reader(Connection connection) {
-        this.connection = connection;
-    }
-
-    @Override
-    public void run() {
-        try {
-            Message fromServer = connection.readMessage();
-            System.out.println(fromServer);
-           // connection.close();
-        }
-        catch (StreamCorruptedException e){
-
+        }catch (IOException ignored){
+            System.out.println("Сервер недоступен");
         }
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    class Reader extends Thread{
+        Connection connection;
 
+        public Reader(Connection connection) {
+            this.connection = connection;
+        }
 
+        @Override
+        public void run() {
+            while (!isInterrupted()) {
+                try {
+                    Message fromServer = connection.readMessage();
+                    System.out.println(fromServer);//"пришло с сервера "
+                    // connection.close();
+                }catch (SocketException e){
+                    System.out.println("Сервер недоступен,попробуйте подключится позже");
+                    System.exit(1);
+                }
+                catch (StreamCorruptedException e) {
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
     }
 }
+
+
 

@@ -7,10 +7,13 @@ import java.time.LocalTime;
 public class Message implements Serializable {
     private String text;
     private LocalTime time;
+    private String name;
+    private int count;
 
 
-    public Message(String text) {
+    public Message(String text,String name) {
         this.text = text;
+        this.name = name;
     }
 
     public LocalTime getTime() {
@@ -22,6 +25,14 @@ public class Message implements Serializable {
         this.time = LocalTime.now();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getText() {
         return text;
     }
@@ -30,9 +41,17 @@ public class Message implements Serializable {
         this.text = text;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     @Override
     public String toString() {
-        return  text +
+        return  "from: "+name+" - "+text +
                 ":" + time;
     }
 }
