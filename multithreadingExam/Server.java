@@ -30,6 +30,7 @@ public class Server {
                 Connection connection = new Connection(clientSocket,messages,connections);
                 connection.setCount(count);
 
+
                 //System.out.println("new client " + connection.getCount()+" count");
                 System.out.println(connections.size());
                 if (connections.isEmpty()){

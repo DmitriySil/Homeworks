@@ -6,34 +6,12 @@ import ru.ifmo.base.lesson19.messages.SimpleMessage;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.Properties;
 import java.util.Scanner;
 
 public class Client {
     private String name;
 
 
-    Socket getSocket() {
-        Properties properties = new Properties();
-        String pName = "Config.properties";
-        try (InputStream input = ru.ifmo.base.lesson19.messages.Client.class.getClassLoader().getResourceAsStream(pName)) {
-            properties.load(input);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        int port = Integer.parseInt(properties.getProperty("port"));
-        String ip = properties.getProperty("ip");
-        Socket socket = null;
-        try {
-            socket = new Socket("127.0.0.1", 8090);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return socket;
-    }
     private void sendAndPrintMessage(Message message,Connection connection) throws Exception {
             connection.sendMessage(message);
            // Message fromServer = connection.readMessage();

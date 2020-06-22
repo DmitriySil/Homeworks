@@ -18,6 +18,7 @@ public class Connection implements AutoCloseable{
     private  LinkedBlockingDeque<Message> messages;
     private CopyOnWriteArraySet<Connection> connections;
     private int count;
+    private String name;
 
 
     public Connection(Socket socket, LinkedBlockingDeque<Message> messages,CopyOnWriteArraySet<Connection> connections) {
@@ -39,6 +40,14 @@ public class Connection implements AutoCloseable{
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void sendMessage(Message message) throws IOException {
@@ -82,6 +91,7 @@ public class Connection implements AutoCloseable{
                 }
                 catch (SocketException e){
                     connections.remove(this.connection);
+
                 }
                 catch (IOException | ClassNotFoundException | InterruptedException e) {
                     e.printStackTrace();
