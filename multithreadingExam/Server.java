@@ -5,16 +5,11 @@ package Homework.multithreadingExam;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class Server {
 
-    private int port;
 
     public void testServer() throws IOException, ClassNotFoundException {
         LinkedBlockingDeque<Message> messages = new LinkedBlockingDeque<>();
@@ -62,12 +57,6 @@ public class Server {
             e.printStackTrace();
         }
     }
-
-
-
-
-
-
 
 class ServerWriter extends Thread{
     LinkedBlockingDeque<Message> messages;

@@ -1,13 +1,12 @@
 package Homework.multithreadingExam;
 
-import ru.ifmo.base.lesson19.messages.SimpleMessage;
+
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.LinkedBlockingDeque;
 

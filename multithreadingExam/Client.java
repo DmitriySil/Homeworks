@@ -1,7 +1,7 @@
 package Homework.multithreadingExam;
 
 
-import ru.ifmo.base.lesson19.messages.SimpleMessage;
+
 
 import java.io.*;
 import java.net.Socket;
@@ -69,7 +69,7 @@ public class Client {
                     System.out.println(fromServer);//"пришло с сервера "
                     // connection.close();
                 }catch (SocketException e){
-                    System.out.println("Сервер недоступен,попробуйте подключится позже");
+                    System.out.println("Сервер недоступен,попробуйте подключиться позже");
                     System.exit(1);
                 }
                 catch (StreamCorruptedException e) {
