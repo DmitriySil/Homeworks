@@ -28,8 +28,9 @@ import java.util.TreeMap;
 public class Solution {
 
 
-    private static Map<String,String> text(String[] stArr){
+    private static String text(String[] stArr){
         Map<String,String> sortW = new HashMap<>();
+        String finText = "";
         for (int i = 0; i <stArr.length ; i++){
             int count = 0;
             String[] splitArr = stArr[i].split(" ");
@@ -42,8 +43,14 @@ public class Solution {
             } }
             if(count==0){ sortW.put(splitArr[0],splitArr[1]);
                } } }
-        System.out.println(sortW);
-        return sortW;
+        for (Map.Entry<String,String>entry:sortW.entrySet()){
+            finText = entry.getKey() + "\n";
+            String[] splitArr2 = entry.getValue().split(" ");
+            for (int i = 0; i < splitArr2.length; i++) {
+                finText = finText + String.valueOf(i+1) + ")" + splitArr2[i] + "\n";
+            }
+        }
+        return finText;
     }
     private static String cod(String text){
         char[] charText = text.toCharArray();
@@ -78,7 +85,8 @@ public class Solution {
         String[] stArr = new String[]{"Роль1: текст1", "Роль2: текст1", "Роль3: текст1", "Роль1: текст2", "Роль2: текст2",
                 "Роль3: текст2", "Роль1: текст3", "Роль2: текст3", "Роль1: текст4", "Роль2: текст4"};
         String str = "aabbbccccacffff";
-text(stArr);
-System.out.println(cod(str));
+
+        System.out.println(text(stArr));
+        System.out.println(cod(str));
     }
 }

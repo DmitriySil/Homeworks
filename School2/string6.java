@@ -1,4 +1,4 @@
-package Homework;
+package Homework.School2;
 
 import com.sun.xml.internal.fastinfoset.util.StringArray;
 /*Пользователь вводит названия городов через пробел.
