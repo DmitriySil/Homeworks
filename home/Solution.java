@@ -2,10 +2,7 @@ package Homework.home;
 
 import ru.ifmo.base.Lesson15.User;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 //Задача №1
 // Вам дан список ролей и сценарий пьесы в виде массива строчек.
@@ -33,23 +30,24 @@ public class Solution {
         String finText = "";
         for (int i = 0; i <stArr.length ; i++){
             int count = 0;
-            String[] splitArr = stArr[i].split(" ");
-            if(i==0)  {sortW.put(splitArr[0],splitArr[1]);}
-            if(i>0){
+            String[] splitArr = stArr[i].split(" ",2);
+
+            if(sortW.containsKey(splitArr[0])){
             for(Map.Entry<String,String>entry:sortW.entrySet()){
             if (entry.getKey().equals(splitArr[0])){
-                entry.setValue(entry.getValue() + " " + splitArr[1]);
+                entry.setValue(entry.getValue() + "<->" + splitArr[1]);
                 count++;
-            } }
-            if(count==0){ sortW.put(splitArr[0],splitArr[1]);
-               } } }
+            } } }
+            else sortW.put(splitArr[0],splitArr[1]);
+        }
         for (Map.Entry<String,String>entry:sortW.entrySet()){
-            finText = entry.getKey() + "\n";
-            String[] splitArr2 = entry.getValue().split(" ");
+            finText = finText + "\n" + entry.getKey() + "\n";
+            String[] splitArr2 = entry.getValue().split("<->");
             for (int i = 0; i < splitArr2.length; i++) {
                 finText = finText + String.valueOf(i+1) + ")" + splitArr2[i] + "\n";
             }
         }
+        System.out.println(sortW);
         return finText;
     }
     private static String cod(String text){
@@ -82,7 +80,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String[] stArr = new String[]{"Роль1: текст1", "Роль2: текст1", "Роль3: текст1", "Роль1: текст2", "Роль2: текст2",
+        String[] stArr = new String[]{"Роль1: текст1 для роль1", "Роль2: текст1 для роль2", "Роль3: текст1 для роль3", "Роль1: текст2", "Роль2: текст2",
                 "Роль3: текст2", "Роль1: текст3", "Роль2: текст3", "Роль1: текст4", "Роль2: текст4"};
         String str = "aabbbccccacffff";
 
