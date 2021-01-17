@@ -52,7 +52,7 @@ public class Solution {
     }
     //Task2
     private static String queen(String[] coordinate1,String[] coordinate2){
-        int[][] field = new int[8][8];
+        //int[][] field = new int[8][8];
         List<Integer> list1 = new LinkedList<>();
         List<Integer> list2 = new LinkedList<>();
         List<Integer> list3 = new LinkedList<>();
@@ -79,7 +79,7 @@ public class Solution {
             listException1.add(j);
             listException1.add(k);
         }
-        System.out.println(listException1 + " listex");
+
         for (int i = 0,j = 10,k = -10; i < 7; i++,j = j+10,k=k-10) {
 
             list1.add(list1.get(0) + j);
@@ -154,7 +154,6 @@ public class Solution {
             list8.add(list8.get(0) + k+i+1);
             list8.add(list8.get(0) + k-i-1);
         }
-        System.out.println(list3);
         for (int i = 0; i < list1.size(); i++) {
             for (int j = 0; j < listException1.size(); j++) {
                 if (list1.get(i).equals(listException1.get(j))){
@@ -176,7 +175,6 @@ public class Solution {
                     int k = 7;
                     while (true){
                         if (k + i >= list2.size()) break;
-                        System.out.println(list2.size() + " "+ k+" " +i);
                         list2.remove(i+k);
                         k = k + 7;
                     }
@@ -299,15 +297,12 @@ public class Solution {
         else {
            ans = "Yes";
         }
-
-        for (int i = 0; i < field.length; ++i) {
-            for (int j = 0; j < field.length; ++j) {
-                System.out.print("  " + (i+1)+(j+1));
-            }
-            System.out.println();
-        }
-
-
+//        for (int i = 0; i < field.length; ++i) {
+//            for (int j = 0; j < field.length; ++j) {
+//                System.out.print("  " + (i+1)+(j+1));
+//            }
+//            System.out.println();
+//        }
         return ans;
     }
     //Task3
@@ -343,10 +338,12 @@ public class Solution {
     public static void main(String[] args) {
         String[] stArr = new String[]{"Роль1: текст1 для роль1", "Роль2: текст1 для роль2", "Роль3: текст1 для роль3", "Роль1: текст2", "Роль2: текст2",
                 "Роль3: текст2", "Роль1: текст3", "Роль2: текст3", "Роль1: текст4", "Роль2: текст4"};
-        int[][] arr = new int[8][8];
-        String str = "aabbbccccacffff";
+
         String[] st1 = new String[]{"1","3","5","7","2","4","6","8"};
         String[] st2 = new String[]{"2","6","3","7","4","8","1","5"};
+
+
+        String str = "aabbbccccacffff";
 
 
         System.out.println(text(stArr));
