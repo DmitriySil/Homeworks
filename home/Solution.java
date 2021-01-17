@@ -57,12 +57,21 @@ public class Solution {
         List<Integer> list2 = new LinkedList<>();
         List<Integer> list3 = new LinkedList<>();
         List<Integer> list4 = new LinkedList<>();
+        List<Integer> list5 = new LinkedList<>();
+        List<Integer> list6 = new LinkedList<>();
+        List<Integer> list7 = new LinkedList<>();
+        List<Integer> list8 = new LinkedList<>();
         String ans = null;
+
         for (int i = 0; i < coordinate1.length; i++) {
             if (i==0){ list1.add(Integer.valueOf(coordinate1[i]+coordinate2[i]));}
             if (i==1){ list2.add(Integer.valueOf(coordinate1[i]+coordinate2[i]));}
             if (i==2){ list3.add(Integer.valueOf(coordinate1[i]+coordinate2[i]));}
             if (i==3){ list4.add(Integer.valueOf(coordinate1[i]+coordinate2[i]));}
+            if (i==4){ list5.add(Integer.valueOf(coordinate1[i]+coordinate2[i]));}
+            if (i==5){ list6.add(Integer.valueOf(coordinate1[i]+coordinate2[i]));}
+            if (i==6){ list7.add(Integer.valueOf(coordinate1[i]+coordinate2[i]));}
+            if (i==7){ list8.add(Integer.valueOf(coordinate1[i]+coordinate2[i]));}
         }
         List<Integer> listException1 = new LinkedList<>();
 
@@ -108,18 +117,80 @@ public class Solution {
             list4.add(list4.get(0) + j-i-1);
             list4.add(list4.get(0) + k+i+1);
             list4.add(list4.get(0) + k-i-1);
+
+            list5.add(list5.get(0) + j);
+            list5.add(list5.get(0) + i+1);
+            list5.add(list5.get(0) + k);
+            list5.add(list5.get(0) + (-i-1));
+            list5.add(list5.get(0) + j+i+1);
+            list5.add(list5.get(0) + j-i-1);
+            list5.add(list5.get(0) + k+i+1);
+            list5.add(list5.get(0) + k-i-1);
+
+            list6.add(list6.get(0) + j);
+            list6.add(list6.get(0) + i+1);
+            list6.add(list6.get(0) + k);
+            list6.add(list6.get(0) + (-i-1));
+            list6.add(list6.get(0) + j+i+1);
+            list6.add(list6.get(0) + j-i-1);
+            list6.add(list6.get(0) + k+i+1);
+            list6.add(list6.get(0) + k-i-1);
+
+            list7.add(list7.get(0) + j);
+            list7.add(list7.get(0) + i+1);
+            list7.add(list7.get(0) + k);
+            list7.add(list7.get(0) + (-i-1));
+            list7.add(list7.get(0) + j+i+1);
+            list7.add(list7.get(0) + j-i-1);
+            list7.add(list7.get(0) + k+i+1);
+            list7.add(list7.get(0) + k-i-1);
+
+            list8.add(list8.get(0) + j);
+            list8.add(list8.get(0) + i+1);
+            list8.add(list8.get(0) + k);
+            list8.add(list8.get(0) + (-i-1));
+            list8.add(list8.get(0) + j+i+1);
+            list8.add(list8.get(0) + j-i-1);
+            list8.add(list8.get(0) + k+i+1);
+            list8.add(list8.get(0) + k-i-1);
         }
-        System.out.println(list1);
+        System.out.println(list3);
         for (int i = 0; i < list1.size(); i++) {
             for (int j = 0; j < listException1.size(); j++) {
                 if (list1.get(i).equals(listException1.get(j))){
                     list1.remove(i);
                     int k = 7;
                     while (true){
-                        if (k + i > list1.size()) break;
-                       // System.out.println(k +" " + i);
+                        if (k + i >= list1.size()) break;
                         list1.remove(i+k);
-                       // System.out.println(list1);
+                        k = k + 7;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < list2.size(); i++) {
+            for (int j = 0; j < listException1.size(); j++) {
+                if (list2.get(i).equals(listException1.get(j))){
+                    list2.remove(i);
+                    int k = 7;
+                    while (true){
+                        if (k + i >= list2.size()) break;
+                        System.out.println(list2.size() + " "+ k+" " +i);
+                        list2.remove(i+k);
+                        k = k + 7;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < list3.size(); i++) {
+            for (int j = 0; j < listException1.size(); j++) {
+                if (list3.get(i).equals(listException1.get(j))){
+                    list3.remove(i);
+                    int k = 7;
+                    while (true){
+                        if (k + i >= list3.size()) break;
+                        list3.remove(i+k);
                         k = k + 7;
                     }
                 }
@@ -131,54 +202,102 @@ public class Solution {
                     list4.remove(i);
                     int k = 7;
                     while (true){
-                        if (k + i > list4.size()) break;
-                       // System.out.println(k +" " + i);
+                        if (k + i >= list4.size()) break;
                         list4.remove(i+k);
-                       // System.out.println(list4);
                         k = k + 7;
                     }
                 }
             }
         }
-      //  System.out.println(list1);
-       // System.out.println(coordinate1.length + "length");
-       // System.out.println(list1.size() + "size");
-       // System.out.println(list1.get(54) + " " + "get54");
-       // System.out.println(list4.get(55) + " " + "get55");
+        for (int i = 0; i < list5.size(); i++) {
+            for (int j = 0; j < listException1.size(); j++) {
+                if (list5.get(i).equals(listException1.get(j))){
+                    list5.remove(i);
+                    int k = 7;
+                    while (true){
+                        if (k + i >= list5.size()) break;
+                        list5.remove(i+k);
+                        k = k + 7;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < list6.size(); i++) {
+            for (int j = 0; j < listException1.size(); j++) {
+                if (list6.get(i).equals(listException1.get(j))){
+                    list6.remove(i);
+                    int k = 7;
+                    while (true){
+                        if (k + i >= list6.size()) break;
+                        list6.remove(i+k);
+                        k = k + 7;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < list7.size(); i++) {
+            for (int j = 0; j < listException1.size(); j++) {
+                if (list7.get(i).equals(listException1.get(j))){
+                    list7.remove(i);
+                    int k = 7;
+                    while (true){
+                        if (k + i >=list7.size()) break;
+                        list7.remove(i+k);
+                        k = k + 7;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < list8.size(); i++) {
+            for (int j = 0; j < listException1.size(); j++) {
+                if (list8.get(i).equals(listException1.get(j))){
+                    list8.remove(i);
+                    int k = 7;
+                    while (true){
+                        if (k + i >= list8.size()) break;
+                        list8.remove(i+k);
+                        k = k + 7;
+                    }
+                }
+            }
+        }
         int countCross = 0;
         for (int i = 0; i < coordinate1.length; i++) {
             for (int j = 0; j < list1.size(); j++) {
                 if (list1.get(j).equals(Integer.valueOf(coordinate1[i] + coordinate2[i]))) {
                     if (i != 0) {
+                        System.out.println("1");
                         countCross++;
                     }
                 }}
             for (int j = 0; j < list2.size(); j++) {
                 if (list2.get(j).equals(Integer.valueOf(coordinate1[i] + coordinate2[i]))) {
                     if (i != 1) {
+                        System.out.println("2");
                         countCross++;
                     }
                 }}
             for (int j = 0; j < list3.size(); j++) {
                 if (list3.get(j).equals(Integer.valueOf(coordinate1[i] + coordinate2[i]))) {
                     if (i != 2) {
+                        System.out.println("3");
                         countCross++;
                     }
                 }}
             for (int j = 0; j < list4.size(); j++) {
                 if (list4.get(j).equals(Integer.valueOf(coordinate1[i] + coordinate2[i]))) {
                     if (i != 3) {
+                        System.out.println("4");
                         countCross++;
                     }
                 }
-
             }
         }
         if (countCross == 0) {
-            System.out.println("No");
+            ans = "No";
         }
         else {
-            System.out.println("Yes");
+           ans = "Yes";
         }
 
         for (int i = 0; i < field.length; ++i) {
@@ -226,12 +345,12 @@ public class Solution {
                 "Роль3: текст2", "Роль1: текст3", "Роль2: текст3", "Роль1: текст4", "Роль2: текст4"};
         int[][] arr = new int[8][8];
         String str = "aabbbccccacffff";
-        String[] st1 = new String[]{"1","3","5","7"};
-        String[] st2 = new String[]{"1","2","3","4"};
+        String[] st1 = new String[]{"1","3","5","7","2","4","6","8"};
+        String[] st2 = new String[]{"2","6","3","7","4","8","1","5"};
 
 
         System.out.println(text(stArr));
-        queen(st1,st2);
+        System.out.println(queen(st1,st2));
         System.out.println(cod(str));
     }
 }
